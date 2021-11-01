@@ -6,7 +6,7 @@
 #
 Name     : meson
 Version  : 0.60.0
-Release  : 91
+Release  : 92
 URL      : https://github.com/mesonbuild/meson/releases/download/0.60.0/meson-0.60.0.tar.gz
 Source0  : https://github.com/mesonbuild/meson/releases/download/0.60.0/meson-0.60.0.tar.gz
 Source1  : https://github.com/mesonbuild/meson/releases/download/0.60.0/meson-0.60.0.tar.gz.asc
@@ -98,7 +98,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1635443339
+export SOURCE_DATE_EPOCH=1635753383
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
