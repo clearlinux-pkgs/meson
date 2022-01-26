@@ -1,0 +1,19 @@
+--- meson-0.61.1/mesonbuild/modules/i18n.py~	2021-12-26 16:24:25.000000000 +0000
++++ meson-0.61.1/mesonbuild/modules/i18n.py	2022-01-26 01:00:19.682113357 +0000
+@@ -22,7 +22,7 @@
+ from .. import mlog
+ from ..interpreter.type_checking import CT_BUILD_BY_DEFAULT, CT_INPUT_KW, CT_INSTALL_DIR_KW, CT_INSTALL_TAG_KW, CT_OUTPUT_KW, INSTALL_KW, NoneType, in_set_validator
+ from ..interpreterbase import FeatureNew
+-from ..interpreterbase.decorators import ContainerTypeInfo, KwargInfo, noPosargs, typed_kwargs, typed_pos_args
++from ..interpreterbase.decorators import ContainerTypeInfo, KwargInfo, typed_kwargs, typed_pos_args
+ from ..scripts.gettext import read_linguas
+ 
+ if T.TYPE_CHECKING:
+@@ -128,7 +128,6 @@
+         return [path.join(src_dir, d) for d in dirs]
+ 
+     @FeatureNew('i18n.merge_file', '0.37.0')
+-    @noPosargs
+     @typed_kwargs(
+         'i18n.merge_file',
+         CT_BUILD_BY_DEFAULT,
