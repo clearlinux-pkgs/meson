@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC24E631BABB1FE70 (jpakkane@gmail.com)
 #
 Name     : meson
-Version  : 0.61.1
-Release  : 99
-URL      : https://github.com/mesonbuild/meson/releases/download/0.61.1/meson-0.61.1.tar.gz
-Source0  : https://github.com/mesonbuild/meson/releases/download/0.61.1/meson-0.61.1.tar.gz
-Source1  : https://github.com/mesonbuild/meson/releases/download/0.61.1/meson-0.61.1.tar.gz.asc
+Version  : 0.61.2
+Release  : 100
+URL      : https://github.com/mesonbuild/meson/releases/download/0.61.2/meson-0.61.2.tar.gz
+Source0  : https://github.com/mesonbuild/meson/releases/download/0.61.2/meson-0.61.2.tar.gz
+Source1  : https://github.com/mesonbuild/meson/releases/download/0.61.2/meson-0.61.2.tar.gz.asc
 Summary  : A high performance build system
 Group    : Development/Tools
 License  : Apache-2.0
@@ -88,8 +88,8 @@ python3 components for the meson package.
 
 
 %prep
-%setup -q -n meson-0.61.1
-cd %{_builddir}/meson-0.61.1
+%setup -q -n meson-0.61.2
+cd %{_builddir}/meson-0.61.2
 %patch1 -p1
 
 %build
@@ -97,7 +97,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643158886
+export SOURCE_DATE_EPOCH=1644889065
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,9 +113,9 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/meson
-cp %{_builddir}/meson-0.61.1/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890
-cp %{_builddir}/meson-0.61.1/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b
-cp %{_builddir}/meson-0.61.1/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf
+cp %{_builddir}/meson-0.61.2/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/meson-0.61.2/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b
+cp %{_builddir}/meson-0.61.2/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
