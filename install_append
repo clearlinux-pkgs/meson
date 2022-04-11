@@ -9,9 +9,6 @@ install -dm 0755 %{buildroot}/usr/share/nvim/runtime/{ftplugin,indent,syntax}
 install -m0644 ./data/syntax-highlighting/vim/ftplugin/*   %{buildroot}/usr/share/nvim/runtime/ftplugin/
 install -m0644 ./data/syntax-highlighting/vim/indent/*     %{buildroot}/usr/share/nvim/runtime/indent/
 install -m0644 ./data/syntax-highlighting/vim/syntax/*     %{buildroot}/usr/share/nvim/runtime/syntax/
-# syntax highlight for emacs
-install -dm 0755 %{buildroot}/usr/share/emacs/site-lisp
-install -m0644 ./data/syntax-highlighting/emacs/*          %{buildroot}/usr/share/emacs/site-lisp/
 # shell completion for bash
 install -dm 0755 %{buildroot}/usr/share/bash-completion/completions
 install -m0644 ./data/shell-completions/bash/*             %{buildroot}/usr/share/bash-completion/completions/

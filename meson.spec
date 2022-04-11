@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC24E631BABB1FE70 (jpakkane@gmail.com)
 #
 Name     : meson
-Version  : 0.61.3
-Release  : 101
-URL      : https://github.com/mesonbuild/meson/releases/download/0.61.3/meson-0.61.3.tar.gz
-Source0  : https://github.com/mesonbuild/meson/releases/download/0.61.3/meson-0.61.3.tar.gz
-Source1  : https://github.com/mesonbuild/meson/releases/download/0.61.3/meson-0.61.3.tar.gz.asc
+Version  : 0.62.0
+Release  : 102
+URL      : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz
+Source0  : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz
+Source1  : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz.asc
 Summary  : A high performance build system
 Group    : Development/Tools
 License  : Apache-2.0
@@ -26,7 +26,6 @@ BuildRequires : buildreq-meson
 BuildRequires : ninja
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
-Patch1: posargs.patch
 
 %description
 ftdetect sets the filetype
@@ -88,16 +87,15 @@ python3 components for the meson package.
 
 
 %prep
-%setup -q -n meson-0.61.3
-cd %{_builddir}/meson-0.61.3
-%patch1 -p1
+%setup -q -n meson-0.62.0
+cd %{_builddir}/meson-0.62.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647290449
+export SOURCE_DATE_EPOCH=1649699522
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,9 +111,9 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/meson
-cp %{_builddir}/meson-0.61.3/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890
-cp %{_builddir}/meson-0.61.3/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b
-cp %{_builddir}/meson-0.61.3/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf
+cp %{_builddir}/meson-0.62.0/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/meson-0.62.0/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b
+cp %{_builddir}/meson-0.62.0/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -132,9 +130,6 @@ install -dm 0755 %{buildroot}/usr/share/nvim/runtime/{ftplugin,indent,syntax}
 install -m0644 ./data/syntax-highlighting/vim/ftplugin/*   %{buildroot}/usr/share/nvim/runtime/ftplugin/
 install -m0644 ./data/syntax-highlighting/vim/indent/*     %{buildroot}/usr/share/nvim/runtime/indent/
 install -m0644 ./data/syntax-highlighting/vim/syntax/*     %{buildroot}/usr/share/nvim/runtime/syntax/
-# syntax highlight for emacs
-install -dm 0755 %{buildroot}/usr/share/emacs/site-lisp
-install -m0644 ./data/syntax-highlighting/emacs/*          %{buildroot}/usr/share/emacs/site-lisp/
 # shell completion for bash
 install -dm 0755 %{buildroot}/usr/share/bash-completion/completions
 install -m0644 ./data/shell-completions/bash/*             %{buildroot}/usr/share/bash-completion/completions/
@@ -153,7 +148,6 @@ install -m0644 ./data/shell-completions/zsh/*              %{buildroot}/usr/shar
 %files data
 %defattr(-,root,root,-)
 /usr/share/bash-completion/completions/meson
-/usr/share/emacs/site-lisp/meson.el
 /usr/share/nvim/runtime/ftplugin/meson.vim
 /usr/share/nvim/runtime/indent/meson.vim
 /usr/share/nvim/runtime/syntax/meson.vim
