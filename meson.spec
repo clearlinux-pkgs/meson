@@ -6,7 +6,7 @@
 #
 Name     : meson
 Version  : 0.62.0
-Release  : 102
+Release  : 103
 URL      : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz
 Source0  : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz
 Source1  : https://github.com/mesonbuild/meson/releases/download/0.62.0/meson-0.62.0.tar.gz.asc
@@ -26,6 +26,7 @@ BuildRequires : buildreq-meson
 BuildRequires : ninja
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
+Patch1: posargs.patch
 
 %description
 ftdetect sets the filetype
@@ -89,13 +90,14 @@ python3 components for the meson package.
 %prep
 %setup -q -n meson-0.62.0
 cd %{_builddir}/meson-0.62.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1649699522
+export SOURCE_DATE_EPOCH=1650215471
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

@@ -1,0 +1,12 @@
+diff --git a/mesonbuild/modules/i18n.py b/mesonbuild/modules/i18n.py
+index 09703bb..6412c2b 100644
+--- a/mesonbuild/modules/i18n.py
++++ b/mesonbuild/modules/i18n.py
+@@ -151,7 +151,6 @@ class I18nModule(ExtensionModule):
+         return [path.join(src_dir, d) for d in dirs]
+ 
+     @FeatureNew('i18n.merge_file', '0.37.0')
+-    @noPosargs
+     @typed_kwargs(
+         'i18n.merge_file',
+         CT_BUILD_BY_DEFAULT,
