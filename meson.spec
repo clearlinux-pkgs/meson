@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC24E631BABB1FE70 (jpakkane@gmail.com)
 #
 Name     : meson
-Version  : 0.63.2
-Release  : 112
-URL      : https://github.com/mesonbuild/meson/releases/download/0.63.2/meson-0.63.2.tar.gz
-Source0  : https://github.com/mesonbuild/meson/releases/download/0.63.2/meson-0.63.2.tar.gz
-Source1  : https://github.com/mesonbuild/meson/releases/download/0.63.2/meson-0.63.2.tar.gz.asc
+Version  : 0.63.3
+Release  : 113
+URL      : https://github.com/mesonbuild/meson/releases/download/0.63.3/meson-0.63.3.tar.gz
+Source0  : https://github.com/mesonbuild/meson/releases/download/0.63.3/meson-0.63.3.tar.gz
+Source1  : https://github.com/mesonbuild/meson/releases/download/0.63.3/meson-0.63.3.tar.gz.asc
 Summary  : A high performance build system
 Group    : Development/Tools
 License  : Apache-2.0
@@ -88,11 +88,11 @@ python3 components for the meson package.
 
 
 %prep
-%setup -q -n meson-0.63.2
-cd %{_builddir}/meson-0.63.2
+%setup -q -n meson-0.63.3
+cd %{_builddir}/meson-0.63.3
 %patch1 -p1
 pushd ..
-cp -a meson-0.63.2 buildavx2
+cp -a meson-0.63.3 buildavx2
 popd
 
 %build
@@ -100,7 +100,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662309642
+export SOURCE_DATE_EPOCH=1665065424
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
