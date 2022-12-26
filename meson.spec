@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC24E631BABB1FE70 (jpakkane@gmail.com)
 #
 Name     : meson
-Version  : 0.64.1
-Release  : 117
-URL      : https://github.com/mesonbuild/meson/releases/download/0.64.1/meson-0.64.1.tar.gz
-Source0  : https://github.com/mesonbuild/meson/releases/download/0.64.1/meson-0.64.1.tar.gz
-Source1  : https://github.com/mesonbuild/meson/releases/download/0.64.1/meson-0.64.1.tar.gz.asc
+Version  : 1.0.0
+Release  : 118
+URL      : https://github.com/mesonbuild/meson/releases/download/1.0.0/meson-1.0.0.tar.gz
+Source0  : https://github.com/mesonbuild/meson/releases/download/1.0.0/meson-1.0.0.tar.gz
+Source1  : https://github.com/mesonbuild/meson/releases/download/1.0.0/meson-1.0.0.tar.gz.asc
 Summary  : A high performance build system
 Group    : Development/Tools
 License  : Apache-2.0
@@ -88,11 +88,12 @@ python3 components for the meson package.
 
 
 %prep
-%setup -q -n meson-0.64.1
-cd %{_builddir}/meson-0.64.1
+%setup -q -n meson-1.0.0
+cd %{_builddir}/meson-1.0.0
 %patch1 -p1
 pushd ..
-cp -a meson-0.64.1 buildavx2
+cp -a meson-1.0.0 buildavx2
+cp -a meson-1.0.0 buildavx512
 popd
 
 %build
@@ -100,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1669220529
+export SOURCE_DATE_EPOCH=1672079443
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,8 +114,8 @@ export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx"
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
@@ -125,15 +126,15 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/meson
-cp %{_builddir}/meson-%{version}/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
-cp %{_builddir}/meson-%{version}/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b || :
-cp %{_builddir}/meson-%{version}/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf || :
+cp %{_builddir}/meson-%{version}/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/meson-%{version}/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b
+cp %{_builddir}/meson-%{version}/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 pushd ../buildavx2/
-export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -msse2avx "
 export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
