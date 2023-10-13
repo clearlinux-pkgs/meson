@@ -7,7 +7,7 @@
 #
 Name     : meson
 Version  : 1.2.2
-Release  : 125
+Release  : 126
 URL      : https://github.com/mesonbuild/meson/releases/download/1.2.2/meson-1.2.2.tar.gz
 Source0  : https://github.com/mesonbuild/meson/releases/download/1.2.2/meson-1.2.2.tar.gz
 Source1  : https://github.com/mesonbuild/meson/releases/download/1.2.2/meson-1.2.2.tar.gz.asc
@@ -102,7 +102,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1696015850
+export SOURCE_DATE_EPOCH=1697223668
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -150,7 +150,7 @@ mkdir -p %{buildroot}/usr/share/package-licenses/meson
 cp %{_builddir}/meson-%{version}/COPYING %{buildroot}/usr/share/package-licenses/meson/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
 cp %{_builddir}/meson-%{version}/packaging/License.rtf %{buildroot}/usr/share/package-licenses/meson/00dcd169768382e0b6a13d0d110266754fedb62b || :
 cp %{_builddir}/meson-%{version}/packaging/macpages/English.lproj/license.html %{buildroot}/usr/share/package-licenses/meson/ed59b8ab4e260b632c935598bf0d1472e4e2dbdf || :
-pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
+python3 -m installer --destdir=%{buildroot} dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -160,7 +160,7 @@ CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -m64 -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -m64 -march=x86-64-v3 "
-pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
+python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
 popd
 ## install_append content
 # install syntax highlight files for vim
