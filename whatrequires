@@ -5,5 +5,6 @@ pypi-contourpy
 pypi-meson_python
 pypi-numpy
 pypi-scikit_image
+pypi-scikit_learn
 pytorch
 scipy
