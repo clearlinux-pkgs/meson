@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xC24E631BABB1FE70 (jpakkane@gmail.com)
 #
 Name     : meson
-Version  : 1.5.2
-Release  : 136
-URL      : https://github.com/mesonbuild/meson/releases/download/1.5.2/meson-1.5.2.tar.gz
-Source0  : https://github.com/mesonbuild/meson/releases/download/1.5.2/meson-1.5.2.tar.gz
-Source1  : https://github.com/mesonbuild/meson/releases/download/1.5.2/meson-1.5.2.tar.gz.asc
+Version  : 1.6.0
+Release  : 137
+URL      : https://github.com/mesonbuild/meson/releases/download/1.6.0/meson-1.6.0.tar.gz
+Source0  : https://github.com/mesonbuild/meson/releases/download/1.6.0/meson-1.6.0.tar.gz
+Source1  : https://github.com/mesonbuild/meson/releases/download/1.6.0/meson-1.6.0.tar.gz.asc
 Source2  : C24E631BABB1FE70.pkey
 Summary  : A high performance build system
 Group    : Development/Tools
@@ -99,11 +99,11 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) C24E631BABB1FE70' gpg.status
-%setup -q -n meson-1.5.2
-cd %{_builddir}/meson-1.5.2
+%setup -q -n meson-1.6.0
+cd %{_builddir}/meson-1.6.0
 %patch -P 1 -p1
 pushd ..
-cp -a meson-1.5.2 buildavx2
+cp -a meson-1.6.0 buildavx2
 popd
 
 %build
@@ -111,7 +111,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1727044646
+export SOURCE_DATE_EPOCH=1729530552
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
