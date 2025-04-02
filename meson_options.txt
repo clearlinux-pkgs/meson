@@ -1,1 +1,1 @@
-option('use_pthread', type: 'combo', choices: ['ON', 'OFF', 'NOT_SET'], value: 'ON')
+option('test-failure', type: 'boolean', value: false)
