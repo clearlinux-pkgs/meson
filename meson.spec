@@ -9,7 +9,7 @@
 #
 Name     : meson
 Version  : 1.8.2
-Release  : 144
+Release  : 145
 URL      : https://github.com/mesonbuild/meson/releases/download/1.8.2/meson-1.8.2.tar.gz
 Source0  : https://github.com/mesonbuild/meson/releases/download/1.8.2/meson-1.8.2.tar.gz
 Source1  : https://github.com/mesonbuild/meson/releases/download/1.8.2/meson-1.8.2.tar.gz.asc
